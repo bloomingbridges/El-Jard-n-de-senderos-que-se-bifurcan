@@ -23,6 +23,8 @@
 		03EE74761824CAE700AB60C0 /* Forking_PathsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EE74751824CAE700AB60C0 /* Forking_PathsTests.m */; };
 		03EE74811824D69E00AB60C0 /* left.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03EE747F1824D69E00AB60C0 /* left.jpg */; };
 		03EE74821824D69E00AB60C0 /* right.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03EE74801824D69E00AB60C0 /* right.jpg */; };
+		5C4D0FBA189BF64B000FA504 /* ForkingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4D0FB9189BF64B000FA504 /* ForkingView.m */; };
+		5C4D0FC0189C0001000FA504 /* AltViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4D0FBF189C0001000FA504 /* AltViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,10 @@
 		03EE74751824CAE700AB60C0 /* Forking_PathsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Forking_PathsTests.m; sourceTree = "<group>"; };
 		03EE747F1824D69E00AB60C0 /* left.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = left.jpg; path = Images.xcassets/left.jpg; sourceTree = "<group>"; };
 		03EE74801824D69E00AB60C0 /* right.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = right.jpg; path = Images.xcassets/right.jpg; sourceTree = "<group>"; };
+		5C4D0FB8189BF64B000FA504 /* ForkingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForkingView.h; sourceTree = "<group>"; };
+		5C4D0FB9189BF64B000FA504 /* ForkingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForkingView.m; sourceTree = "<group>"; };
+		5C4D0FBE189C0001000FA504 /* AltViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AltViewController.h; sourceTree = "<group>"; };
+		5C4D0FBF189C0001000FA504 /* AltViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AltViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +131,10 @@
 				03EE747F1824D69E00AB60C0 /* left.jpg */,
 				03EE74801824D69E00AB60C0 /* right.jpg */,
 				03EE74511824CAE700AB60C0 /* Supporting Files */,
+				5C4D0FB8189BF64B000FA504 /* ForkingView.h */,
+				5C4D0FB9189BF64B000FA504 /* ForkingView.m */,
+				5C4D0FBE189C0001000FA504 /* AltViewController.h */,
+				5C4D0FBF189C0001000FA504 /* AltViewController.m */,
 			);
 			path = "Forking Paths";
 			sourceTree = "<group>";
@@ -259,6 +269,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				03EE745B1824CAE700AB60C0 /* xxiivvAppDelegate.m in Sources */,
+				5C4D0FBA189BF64B000FA504 /* ForkingView.m in Sources */,
+				5C4D0FC0189C0001000FA504 /* AltViewController.m in Sources */,
 				03EE74611824CAE700AB60C0 /* xxiivvViewController.m in Sources */,
 				03EE74571824CAE700AB60C0 /* main.m in Sources */,
 			);
