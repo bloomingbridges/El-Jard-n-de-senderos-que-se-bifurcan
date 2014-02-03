@@ -32,10 +32,10 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--Alt View Controller - Alternative View Controller-->
+        <!--Alt View Controller-->
         <scene sceneID="HtD-50-6Kq">
             <objects>
-                <viewController title="Alternative View Controller" id="egd-U2-uZa" customClass="AltViewController" sceneMemberID="viewController">
+                <viewController id="egd-U2-uZa" customClass="AltViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KNS-aT-QqV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

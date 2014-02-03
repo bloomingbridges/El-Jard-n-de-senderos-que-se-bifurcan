@@ -1,5 +1,5 @@
 //
-//  xxiivvPathView.h
+//  DigitView.h
 //  Forking Paths
 //
 //  Created by Florian Brueckner on 31/01/2014.
@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ForkingView : UIView
-    @property BOOL inversed;
+@interface DigitView : UIView
 
-    - (void)turn;
+- (void)displayDigit:(int)digit;
+
 @end
+
