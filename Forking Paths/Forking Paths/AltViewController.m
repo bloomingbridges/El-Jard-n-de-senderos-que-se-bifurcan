@@ -8,7 +8,6 @@
 
 #import "AltViewController.h"
 #import "DigitView.h"
-#import "ForkingView.h"
 
 @interface AltViewController ()
 
@@ -28,29 +27,50 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"left.jpg"]];
 
-    DigitView *hours = [[DigitView alloc] initWithFrame:CGRectMake(75.0, 75.0, 75.0, 125.0)];
-    [self.view addSubview:hours];
-    [hours displayDigit:0];
-    DigitView *hours2 = [[DigitView alloc] initWithFrame:CGRectMake(175.0, 75.0, 75.0, 125.0)];
-    [self.view addSubview:hours2];
-    [hours2 displayDigit:0];
+    self.hours = [[DigitView alloc] initWithFrame:CGRectMake(75.0, 75.0, 75.0, 125.0)];
+    [self.view addSubview:self.hours];
+    self.hours2 = [[DigitView alloc] initWithFrame:CGRectMake(175.0, 75.0, 75.0, 125.0)];
+    [self.view addSubview:self.hours2];
     
-    DigitView *minutes = [[DigitView alloc] initWithFrame:CGRectMake(75.0, 225.0, 75.0, 125.0)];
-    [self.view addSubview:minutes];
-    [minutes displayDigit:0];
-    DigitView *minutes2 = [[DigitView alloc] initWithFrame:CGRectMake(175.0, 225.0, 75.0, 125.0)];
-    [self.view addSubview:minutes2];
-    [minutes2 displayDigit:0];
+    self.minutes = [[DigitView alloc] initWithFrame:CGRectMake(75.0, 225.0, 75.0, 125.0)];
+    [self.view addSubview:self.minutes];
+    self.minutes2 = [[DigitView alloc] initWithFrame:CGRectMake(175.0, 225.0, 75.0, 125.0)];
+    [self.view addSubview:self.minutes2];
     
-    DigitView *seconds = [[DigitView alloc] initWithFrame:CGRectMake(75.0, 375.0, 75.0, 125.0)];
-    [self.view addSubview:seconds];
-    [seconds displayDigit:0];
-    DigitView *seconds2 = [[DigitView alloc] initWithFrame:CGRectMake(175.0, 375.0, 75.0, 125.0)];
-    [self.view addSubview:seconds2];
-    [seconds2 displayDigit:0];
+    self.seconds = [[DigitView alloc] initWithFrame:CGRectMake(75.0, 375.0, 75.0, 125.0)];
+    [self.view addSubview:self.seconds];
+    self.seconds2 = [[DigitView alloc] initWithFrame:CGRectMake(175.0, 375.0, 75.0, 125.0)];
+    [self.view addSubview:self.seconds2];
+    
+    [self timerAdvanced];
+    
+    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerAdvanced) userInfo:Nil repeats:YES];
+}
+
+- (void)timerAdvanced
+{
+    NSDate *currentTime = [NSDate date];
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	[dateFormatter setDateFormat:@"HH"]; // @"hh-mm"
+    NSString *t_hour = [dateFormatter stringFromDate: currentTime];
+    [dateFormatter setDateFormat:@"mm"]; // @"hh-mm"
+    NSString *t_minu = [dateFormatter stringFromDate: currentTime];
+	[dateFormatter setDateFormat:@"ss"]; // @"hh-mm"
+	NSString *t_seco = [dateFormatter stringFromDate: currentTime];
+    
+//    NSLog([dateFormatter stringFromDate: currentTime]);
+    
+    [self.hours displayDigit:[[t_hour substringWithRange:NSMakeRange(0, 1)] intValue]];
+    [self.hours2 displayDigit:[[t_hour substringWithRange:NSMakeRange(1, 1)] intValue]];
+    
+    [self.minutes displayDigit:[[t_minu substringWithRange:NSMakeRange(0, 1)] intValue]];
+    [self.minutes2 displayDigit:[[t_minu substringWithRange:NSMakeRange(1, 1)] intValue]];
+    
+    [self.seconds displayDigit:[[t_seco substringWithRange:NSMakeRange(0, 1)] intValue]];
+    [self.seconds2 displayDigit:[[t_seco substringWithRange:NSMakeRange(1, 1)] intValue]];
 }
 
 - (void)didReceiveMemoryWarning

@@ -9,24 +9,27 @@
 #import "DigitView.h"
 #import "ForkingView.h"
 
-@implementation DigitView
+@interface DigitView ()
+    @property (nonatomic, retain) NSMutableArray *cells;
+@end
 
-NSMutableArray *cells;
+@implementation DigitView
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         int x, y;
-        cells = [NSMutableArray arrayWithCapacity:15];
+        self.cells = [NSMutableArray arrayWithCapacity:15];
         for (int i = 0; i<=14; i++) {
             x = (i % 3) * 25.0;
             y = (i / 3) * 25.0;
             ForkingView *cell = [[ForkingView alloc] initWithFrame:CGRectMake(x, y, 25.0, 25.0)];
-            [cells addObject:cell];
+            [self.cells addObject:cell];
             [self addSubview:cell];
         }
         [self setOpaque:NO];
+        [self displayDigit:-1];
     }
     return self;
 }
@@ -34,14 +37,15 @@ NSMutableArray *cells;
 - (void)displayDigit:(int)digit
 {
     NSArray *blueprint = [DigitView fetchDigitBlueprintFor:digit];
-    NSLog(@"BLUEPRINT for %i: %@", digit, blueprint);
+//    NSLog(@"Displaying digit %i", digit);
+//    NSLog(@"BLUEPRINT for %i: %@", digit, blueprint);
     BOOL supposedValue;
     for (int i=0; i<=14; i++) {
         supposedValue = [[blueprint objectAtIndex:i] boolValue];
-        NSLog(@"NEEDS BE %@", (supposedValue == YES) ? @"YES" : @"NO");
-        if (supposedValue != [[cells objectAtIndex:i] inversed]) {
-            NSLog(@"Supposedly different..");
-            [[cells objectAtIndex:i] turn];
+//        NSLog(@"NEEDS BE %@", (supposedValue == YES) ? @"YES" : @"NO");
+        if (supposedValue != [[self.cells objectAtIndex:i] inversed]) {
+//            NSLog(@"Supposedly different..");
+            [[self.cells objectAtIndex:i] turn];
         }
     }
 }
@@ -55,6 +59,14 @@ NSMutableArray *cells;
                            @NO,@NO,@NO];
     
     switch (digit) {
+            
+        case -1:
+            return @[@YES, @NO,  @YES,
+                     @YES, @NO,  @YES,
+                     @NO,  @YES, @NO,
+                     @YES, @NO,  @YES,
+                     @YES, @NO,  @YES];
+            break;
             
         case 0:
             return @[@YES, @YES, @YES,
@@ -70,6 +82,7 @@ NSMutableArray *cells;
                      @NO, @YES, @NO,
                      @NO, @YES, @NO,
                      @NO, @YES, @NO];
+            break;
             
         case 2:
             return @[@YES, @YES, @YES,
@@ -77,6 +90,7 @@ NSMutableArray *cells;
                      @YES, @YES, @YES,
                      @YES, @NO,  @NO,
                      @YES, @YES, @YES];
+            break;
             
         case 3:
             return @[@YES, @YES, @YES,
@@ -84,6 +98,7 @@ NSMutableArray *cells;
                      @YES, @YES, @YES,
                      @NO,  @NO,  @YES,
                      @YES, @YES, @YES];
+            break;
             
         case 4:
             return @[@YES, @NO,  @YES,
@@ -91,6 +106,7 @@ NSMutableArray *cells;
                      @YES, @YES, @YES,
                      @NO,  @NO,  @YES,
                      @NO,  @NO,  @YES];
+            break;
             
         case 5:
             return @[@YES, @YES, @YES,
@@ -98,6 +114,7 @@ NSMutableArray *cells;
                      @YES, @YES, @YES,
                      @NO,  @NO,  @YES,
                      @YES, @YES, @YES];
+            break;
             
         case 6:
             return @[@YES, @NO,  @NO,
@@ -105,6 +122,7 @@ NSMutableArray *cells;
                      @YES, @YES, @YES,
                      @YES, @NO,  @YES,
                      @YES, @YES, @YES];
+            break;
             
         case 7:
             return @[@YES, @YES, @YES,
@@ -112,6 +130,7 @@ NSMutableArray *cells;
                      @NO,  @NO,  @YES,
                      @NO,  @NO,  @YES,
                      @NO,  @NO,  @YES];
+            break;
             
         case 8:
             return @[@YES, @YES, @YES,
@@ -119,6 +138,7 @@ NSMutableArray *cells;
                      @YES, @YES, @YES,
                      @YES, @NO,  @YES,
                      @YES, @YES, @YES];
+            break;
             
         case 9:
             return @[@YES, @YES, @YES,
@@ -126,6 +146,7 @@ NSMutableArray *cells;
                      @YES, @YES, @YES,
                      @NO,  @NO,  @YES,
                      @NO,  @NO,  @YES];
+            break;
             
         default:
             return blueprint;
