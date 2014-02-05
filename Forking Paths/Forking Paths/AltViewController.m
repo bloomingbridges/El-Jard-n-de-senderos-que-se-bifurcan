@@ -28,7 +28,10 @@
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"left.jpg"]];
+    [self triggerFilter];
+    self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(tapped)];
+    [self.view addGestureRecognizer:self.tapRecognizer];
 
     self.hours = [[DigitView alloc] initWithFrame:CGRectMake(75.0, 75.0, 75.0, 125.0)];
     [self.view addSubview:self.hours];
@@ -71,6 +74,22 @@
     
     [self.seconds displayDigit:[[t_seco substringWithRange:NSMakeRange(0, 1)] intValue]];
     [self.seconds2 displayDigit:[[t_seco substringWithRange:NSMakeRange(1, 1)] intValue]];
+}
+
+- (void)tapped
+{
+    self.filterActive = self.filterActive ? NO : YES;
+    [self triggerFilter];
+}
+
+- (void)triggerFilter
+{
+
+    if (self.filterActive) {
+        self.view.backgroundColor = [UIColor blackColor];
+    } else {
+        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"left.jpg"]];
+    }
 }
 
 //- (void)didReceiveMemoryWarning

@@ -11,6 +11,9 @@
 
 @interface AltViewController : UIViewController
 
+    @property BOOL filterActive;
+    @property UITapGestureRecognizer *tapRecognizer;
+
     @property (nonatomic, strong) DigitView *hours;
     @property (nonatomic, strong) DigitView *hours2;
     @property (nonatomic, strong) DigitView *minutes;
