@@ -64,7 +64,7 @@
     animation.autoreverses = NO;
     animation.removedOnCompletion = NO;
     animation.fillMode = (self.inversed == YES) ? kCAFillModeForwards : kCAFillModeBackwards;
-    animation.fromValue = (id) self.pathLayer.path;
+    animation.fromValue = (id) [self createPath:!self.inversed];
     animation.toValue = (id) [self createPath:self.inversed];
     [self.pathLayer addAnimation:animation forKey:@"animatePath"];
     
