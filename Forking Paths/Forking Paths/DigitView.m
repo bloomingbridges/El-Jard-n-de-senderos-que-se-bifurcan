@@ -42,9 +42,7 @@
     BOOL supposedValue;
     for (int i=0; i<=14; i++) {
         supposedValue = [[blueprint objectAtIndex:i] boolValue];
-//        NSLog(@"NEEDS BE %@", (supposedValue == YES) ? @"YES" : @"NO");
         if (supposedValue != [[self.cells objectAtIndex:i] inversed]) {
-//            NSLog(@"Supposedly different..");
             [[self.cells objectAtIndex:i] turn];
         }
     }
@@ -60,13 +58,13 @@
     
     switch (digit) {
             
-        case -1:
-            return @[@YES, @NO,  @YES,
-                     @YES, @NO,  @YES,
-                     @NO,  @YES, @NO,
-                     @YES, @NO,  @YES,
-                     @YES, @NO,  @YES];
-            break;
+//        case -1:
+//            return @[@YES, @NO,  @YES,
+//                     @YES, @NO,  @YES,
+//                     @NO,  @YES, @NO,
+//                     @YES, @NO,  @YES,
+//                     @YES, @NO,  @YES];
+//            break;
             
         case 0:
             return @[@YES, @YES, @YES,

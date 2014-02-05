@@ -73,11 +73,10 @@
     [self.seconds2 displayDigit:[[t_seco substringWithRange:NSMakeRange(1, 1)] intValue]];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+//- (void)didReceiveMemoryWarning
+//{
+//    [super didReceiveMemoryWarning];
+//}
 
 - (BOOL)prefersStatusBarHidden
 {

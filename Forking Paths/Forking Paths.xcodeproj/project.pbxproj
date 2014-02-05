@@ -26,6 +26,7 @@
 		5C4D0FBA189BF64B000FA504 /* ForkingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4D0FB9189BF64B000FA504 /* ForkingView.m */; };
 		5C4D0FC0189C0001000FA504 /* AltViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4D0FBF189C0001000FA504 /* AltViewController.m */; };
 		5C4D0FC3189C077F000FA504 /* DigitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4D0FC2189C077F000FA504 /* DigitView.m */; };
+		5C4D0FC518A135F4000FA504 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C4D0FC418A135F4000FA504 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		5C4D0FBF189C0001000FA504 /* AltViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AltViewController.m; sourceTree = "<group>"; };
 		5C4D0FC1189C077F000FA504 /* DigitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DigitView.h; sourceTree = "<group>"; };
 		5C4D0FC2189C077F000FA504 /* DigitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DigitView.m; sourceTree = "<group>"; };
+		5C4D0FC418A135F4000FA504 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C4D0FC518A135F4000FA504 /* QuartzCore.framework in Frameworks */,
 				03EE744D1824CAE700AB60C0 /* CoreGraphics.framework in Frameworks */,
 				03EE744F1824CAE700AB60C0 /* UIKit.framework in Frameworks */,
 				03EE744B1824CAE700AB60C0 /* Foundation.framework in Frameworks */,
@@ -114,6 +117,7 @@
 		03EE74491824CAE700AB60C0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5C4D0FC418A135F4000FA504 /* QuartzCore.framework */,
 				03EE744A1824CAE700AB60C0 /* Foundation.framework */,
 				03EE744C1824CAE700AB60C0 /* CoreGraphics.framework */,
 				03EE744E1824CAE700AB60C0 /* UIKit.framework */,

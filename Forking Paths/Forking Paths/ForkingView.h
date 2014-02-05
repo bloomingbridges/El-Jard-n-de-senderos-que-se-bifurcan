@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface ForkingView : UIView
+
+    @property (retain) CAShapeLayer *pathLayer;
     @property BOOL inversed;
 
     - (void)turn;
