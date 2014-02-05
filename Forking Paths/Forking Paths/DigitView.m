@@ -29,12 +29,12 @@
             [self addSubview:cell];
         }
         [self setOpaque:NO];
-        [self displayDigit:-1];
+        [self displayDigit:-1 withFilter:NO];
     }
     return self;
 }
 
-- (void)displayDigit:(int)digit
+- (void)displayDigit:(int)digit withFilter:(BOOL)filter
 {
     NSArray *blueprint = [DigitView fetchDigitBlueprintFor:digit];
 //    NSLog(@"Displaying digit %i", digit);
@@ -43,8 +43,16 @@
     for (int i=0; i<=14; i++) {
         supposedValue = [[blueprint objectAtIndex:i] boolValue];
         if (supposedValue != [[self.cells objectAtIndex:i] inversed]) {
-            [[self.cells objectAtIndex:i] turn];
+            if (filter == YES) { [[self.cells objectAtIndex:i] replace:supposedValue]; }
+            else { [[self.cells objectAtIndex:i] turn]; }
         }
+    }
+}
+
+- (void)reset:(BOOL)filtered
+{
+    for (ForkingView* cell in self.cells) {
+        [cell clearAndRestore:filtered];
     }
 }
 

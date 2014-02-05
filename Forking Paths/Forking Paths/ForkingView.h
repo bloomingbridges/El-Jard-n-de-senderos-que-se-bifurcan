@@ -15,4 +15,6 @@
     @property BOOL inversed;
 
     - (void)turn;
+    - (void)replace:(BOOL)direction;
+    - (void)clearAndRestore:(BOOL)restore;
 @end

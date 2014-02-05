@@ -63,19 +63,40 @@
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"path"];
     animation.autoreverses = NO;
     animation.removedOnCompletion = NO;
-    animation.fillMode = kCAFillModeForwards;
+    animation.fillMode = (self.inversed == YES) ? kCAFillModeForwards : kCAFillModeBackwards;
     animation.fromValue = (id) self.pathLayer.path;
-    animation.toValue = (__bridge id) [self createPath:self.inversed];
+    animation.toValue = (id) [self createPath:self.inversed];
     [self.pathLayer addAnimation:animation forKey:@"animatePath"];
     
-//    [self.pathLayer setPath:[self createPath:self.inversed]];
     [self setNeedsDisplay];
+}
+
+- (void)replace:(BOOL)direction
+{
+    self.inversed = direction;
+    if (self.inversed == YES) {
+        [self.pathLayer setHidden:NO];
+        [self.pathLayer setPath:[self createPath:YES]];
+    } else {
+        [self.pathLayer setPath:[self createPath:NO]];
+        [self.pathLayer setHidden:YES];
+    }
+    
+//    [self.pathLayer removeAnimationForKey:@"animatePath"];
+    [self setNeedsDisplay];
+}
+
+- (void)clearAndRestore:(BOOL)restore
+{
+    self.inversed = NO;
+    [self.pathLayer setPath:[self createPath:restore]];
+    [self.pathLayer setHidden:restore];
 }
 
 - (void)drawRect:(CGRect)rect
 {
     #if DEBUG
-    NSLog(self.inversed ? @"\\" : @"//");
+//    NSLog(self.inversed ? @"\\" : @"//");
     if (self.inversed == YES) {
         [self.pathLayer setBackgroundColor:[UIColor colorWithRed:1.0 green:0.0 blue:0.5 alpha:1.0].CGColor];
     } else {

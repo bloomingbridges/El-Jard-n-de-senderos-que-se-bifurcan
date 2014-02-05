@@ -66,20 +66,27 @@
     
 //    NSLog([dateFormatter stringFromDate: currentTime]);
     
-    [self.hours displayDigit:[[t_hour substringWithRange:NSMakeRange(0, 1)] intValue]];
-    [self.hours2 displayDigit:[[t_hour substringWithRange:NSMakeRange(1, 1)] intValue]];
+    [self.hours displayDigit:[[t_hour substringWithRange:NSMakeRange(0, 1)] intValue] withFilter:self.filterActive];
+    [self.hours2 displayDigit:[[t_hour substringWithRange:NSMakeRange(1, 1)] intValue] withFilter:self.filterActive];
     
-    [self.minutes displayDigit:[[t_minu substringWithRange:NSMakeRange(0, 1)] intValue]];
-    [self.minutes2 displayDigit:[[t_minu substringWithRange:NSMakeRange(1, 1)] intValue]];
+    [self.minutes displayDigit:[[t_minu substringWithRange:NSMakeRange(0, 1)] intValue] withFilter:self.filterActive];
+    [self.minutes2 displayDigit:[[t_minu substringWithRange:NSMakeRange(1, 1)] intValue] withFilter:self.filterActive];
     
-    [self.seconds displayDigit:[[t_seco substringWithRange:NSMakeRange(0, 1)] intValue]];
-    [self.seconds2 displayDigit:[[t_seco substringWithRange:NSMakeRange(1, 1)] intValue]];
+    [self.seconds displayDigit:[[t_seco substringWithRange:NSMakeRange(0, 1)] intValue] withFilter:self.filterActive];
+    [self.seconds2 displayDigit:[[t_seco substringWithRange:NSMakeRange(1, 1)] intValue] withFilter:self.filterActive];
 }
 
 - (void)tapped
 {
     self.filterActive = self.filterActive ? NO : YES;
+    [self.hours    reset:self.filterActive];
+    [self.hours2   reset:self.filterActive];
+    [self.minutes  reset:self.filterActive];
+    [self.minutes2 reset:self.filterActive];
+    [self.seconds  reset:self.filterActive];
+    [self.seconds2 reset:self.filterActive];
     [self triggerFilter];
+    [self timerAdvanced];
 }
 
 - (void)triggerFilter

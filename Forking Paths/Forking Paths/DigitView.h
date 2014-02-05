@@ -10,7 +10,8 @@
 
 @interface DigitView : UIView
 
-- (void)displayDigit:(int)digit;
+    - (void)displayDigit:(int)digit withFilter:(BOOL)filter;
+    - (void)reset:(BOOL)filtered;
 
 @end
 
