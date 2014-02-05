@@ -83,11 +83,11 @@
             break;
             
         case 1:
-            return @[@NO, @YES, @NO,
-                     @NO, @YES, @NO,
-                     @NO, @YES, @NO,
-                     @NO, @YES, @NO,
-                     @NO, @YES, @NO];
+            return @[@NO,  @YES, @NO,
+                     @YES, @YES, @NO,
+                     @NO,  @YES, @NO,
+                     @NO,  @YES, @NO,
+                     @NO,  @YES, @NO];
             break;
             
         case 2:

@@ -32,20 +32,22 @@
     self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
                                             action:@selector(tapped)];
     [self.view addGestureRecognizer:self.tapRecognizer];
+    
+    float modifier = ([UIScreen mainScreen].bounds.size.height == 568.0) ? 50.0 : 0.0;
 
-    self.hours = [[DigitView alloc] initWithFrame:CGRectMake(75.0, 75.0, 75.0, 125.0)];
+    self.hours = [[DigitView alloc] initWithFrame:CGRectMake(75.0, 25.0 + modifier, 75.0, 125.0)];
     [self.view addSubview:self.hours];
-    self.hours2 = [[DigitView alloc] initWithFrame:CGRectMake(175.0, 75.0, 75.0, 125.0)];
+    self.hours2 = [[DigitView alloc] initWithFrame:CGRectMake(175.0, 25.0 + modifier, 75.0, 125.0)];
     [self.view addSubview:self.hours2];
     
-    self.minutes = [[DigitView alloc] initWithFrame:CGRectMake(75.0, 225.0, 75.0, 125.0)];
+    self.minutes = [[DigitView alloc] initWithFrame:CGRectMake(75.0, 175.0 + modifier, 75.0, 125.0)];
     [self.view addSubview:self.minutes];
-    self.minutes2 = [[DigitView alloc] initWithFrame:CGRectMake(175.0, 225.0, 75.0, 125.0)];
+    self.minutes2 = [[DigitView alloc] initWithFrame:CGRectMake(175.0, 175.0 + modifier, 75.0, 125.0)];
     [self.view addSubview:self.minutes2];
     
-    self.seconds = [[DigitView alloc] initWithFrame:CGRectMake(75.0, 375.0, 75.0, 125.0)];
+    self.seconds = [[DigitView alloc] initWithFrame:CGRectMake(75.0, 325.0 + modifier, 75.0, 125.0)];
     [self.view addSubview:self.seconds];
-    self.seconds2 = [[DigitView alloc] initWithFrame:CGRectMake(175.0, 375.0, 75.0, 125.0)];
+    self.seconds2 = [[DigitView alloc] initWithFrame:CGRectMake(175.0, 325.0 + modifier, 75.0, 125.0)];
     [self.view addSubview:self.seconds2];
     
     [self timerAdvanced];
