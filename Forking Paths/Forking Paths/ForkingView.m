@@ -14,7 +14,6 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
         self.inversed = YES;
         self.pathLayer = [CAShapeLayer layer];
         [self.pathLayer setFrame:CGRectMake(0.0, 0.0, 25.0, 25.0)];
@@ -23,13 +22,12 @@
         [self.pathLayer setStrokeColor:[UIColor whiteColor].CGColor];
         [self.pathLayer setLineWidth:1.5];
         [self.pathLayer setLineCap:kCALineCapRound];
+        [self.pathLayer setShouldRasterize:YES];
         [self.pathLayer setMinificationFilter:kCAFilterNearest];
         [self.pathLayer setMagnificationFilter:kCAFilterNearest];
         [self.pathLayer setPath:[self createPath:NO]];
         [self.layer addSublayer:self.pathLayer];
         [self setOpaque:NO];
-
-//        [self clearsContextBeforeDrawing];
     }
     return self;
 }

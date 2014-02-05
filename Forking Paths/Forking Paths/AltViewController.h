@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 #import "DigitView.h"
 
 @interface AltViewController : UIViewController
 
     @property BOOL filterActive;
     @property UITapGestureRecognizer *tapRecognizer;
+    @property CALayer *patternLayer;
+    @property NSTimer *timer;
 
     @property (nonatomic, strong) DigitView *hours;
     @property (nonatomic, strong) DigitView *hours2;

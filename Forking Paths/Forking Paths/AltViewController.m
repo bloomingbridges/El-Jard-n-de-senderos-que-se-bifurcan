@@ -28,6 +28,13 @@
 {
     [super viewDidLoad];
     
+    self.patternLayer = [CALayer layer];
+    self.patternLayer.frame = CGRectMake(0.0, 0.0, 320, [UIScreen mainScreen].bounds.size.height);
+    self.patternLayer.backgroundColor = [UIColor blackColor].CGColor;
+    [self.patternLayer setDelegate:self];
+    [self.view.layer addSublayer:self.patternLayer];
+    [self.patternLayer setNeedsDisplay];
+    
     [self triggerFilter];
     self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
                                             action:@selector(tapped)];
@@ -93,12 +100,44 @@
 
 - (void)triggerFilter
 {
-
     if (self.filterActive) {
-        self.view.backgroundColor = [UIColor blackColor];
+        [self.patternLayer setHidden:YES];
+        [self.patternLayer setNeedsDisplay];
     } else {
-        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"left.jpg"]];
+        [self.patternLayer setHidden:NO];
+        [self.patternLayer setNeedsDisplay];
     }
+}
+
+void LeftPattern (void *info, CGContextRef ctx) {
+    CGContextSetStrokeColorWithColor(ctx, [UIColor whiteColor].CGColor);
+    CGContextSetLineWidth(ctx, 1.5);
+    CGContextSetLineCap(ctx, kCGLineCapRound);
+    CGContextBeginPath(ctx);
+    CGContextMoveToPoint(ctx, 0.0, 12.5);
+    CGContextAddLineToPoint(ctx, 12.5, 0.0);
+    CGContextStrokePath(ctx);
+//    CGContextClosePath(ctx);
+    
+    CGContextBeginPath(ctx);
+    CGContextMoveToPoint(ctx, 12.5, 25.0);
+    CGContextAddLineToPoint(ctx, 25.0, 12.5);
+    CGContextStrokePath(ctx);
+//    CGContextClosePath(ctx);
+}
+
+- (void)drawLayer:(CALayer*)layer inContext:(CGContextRef)ctx {
+    static const CGPatternCallbacks callbacks = { 0, &LeftPattern, NULL };
+    CGContextSaveGState(ctx);
+    CGColorSpaceRef patternSpace = CGColorSpaceCreatePattern(NULL);
+    CGContextSetFillColorSpace(ctx, patternSpace);
+    CGColorSpaceRelease(patternSpace);
+    CGPatternRef pattern = CGPatternCreate(NULL, self.patternLayer.bounds, CGAffineTransformIdentity, 25, 25, kCGPatternTilingNoDistortion, true, &callbacks);
+    CGFloat alpha = 1.0;
+    CGContextSetFillPattern(ctx, pattern, &alpha);
+    CGPatternRelease(pattern);
+    CGContextFillRect(ctx, self.view.bounds);
+    CGContextRestoreGState(ctx);
 }
 
 //- (void)didReceiveMemoryWarning
